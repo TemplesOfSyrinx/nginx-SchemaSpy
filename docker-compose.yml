@@ -1,0 +1,22 @@
+version: '2'
+
+services:
+
+  nginx:
+    image: nginx
+    container_name: nginx
+    volumes:
+      - /usr/share/nginx/html
+    ports:
+      - "80:80"
+
+  schemaspy:
+    image: templesofsyrinx/schemaspy
+    container_name: schemaspy
+    volumes_from:
+      - nginx
+    volumes:
+      - ./mysql:/home/schemaSpy/workdir
+    command: [ "-t", "mysql", "-u", "schemaSpy", "-p", "schemaSpy", "-o", "/usr/share/nginx/html" ]
+
+
