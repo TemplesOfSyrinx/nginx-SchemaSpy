@@ -11,7 +11,7 @@ services:
       - "80:80"
 
   schemaspy:
-    image: templesofsyrinx/schemaspy
+    image: templesofsyrinx/dkr-schemaspy
     container_name: schemaspy
     volumes_from:
       - nginx
